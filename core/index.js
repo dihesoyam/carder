@@ -6,26 +6,22 @@
 try{ // Проверка ошибок
 let info = {
 	name : "Carder",
-	version : "1.0.1"
+	version : "1.0.2"
 };
-// Переменные lucky;
 let sum, luckPercent, bonus = 0, bonusStatus = false, platinumBonus = false, averageCardCost, lucky;
-// Кол-во всех карт
-let cards = {
+let cards = { // Кол-во всех карт
 standard : 0,
 silver : 0,
 gold : 0,
 platinum : 0
 },
-// Рандомное число выпавших карт
-value = {
+value = { // Рандомное число выпавших карт
 standard: Math.floor(Math.random()*4+4),
 silver: Math.floor(Math.random()*5+1),
 gold: Math.floor(Math.random()*3+2),
 platinum: Math.floor(Math.random()*3+2)
 },
-// Предцена одной карты (неокруг.)
- _oneCardCost = {
+ _oneCardCost = { // Предцена одной карты (неокруг.)
 standard: Math.random()*1+2,
 silver: Math.random()*2+3,
 gold: Math.random()*3+5,
@@ -37,7 +33,7 @@ oneCardCost.standard = parseFloat(_oneCardCost.standard.toFixed(1));
 oneCardCost.silver = parseFloat(_oneCardCost.silver.toFixed(1));
 oneCardCost.gold = parseFloat(_oneCardCost.gold.toFixed(1));
 oneCardCost.platinum = parseFloat(_oneCardCost.platinum.toFixed(1));
-oneCardCost.average=((oneCardCost.standard+oneCardCost.silver+oneCardCost.gold+oneCardCost.platinum)/4);
+oneCardCost.average = (((oneCardCost.standard+oneCardCost.silver+oneCardCost.gold+oneCardCost.platinum)/4).toFixed(1));
 
 // Вывод информации
 function getInfo(){
@@ -49,18 +45,18 @@ console.log("Silver: "+cards.silver);
 console.log("Gold: "+cards.gold);
 console.log("Platinum: "+cards.platinum)
 console.log("================");
-console.log("Your platinum luck: "+luckPercent.toFixed(1)+"%");
-console.log("Bonus (★×2): "+bonusStatus);
+console.log("Your platinum luck: "+luckPercent+"%");
+console.log("Bonus ($×2): "+bonusStatus);
 console.log("================");
 console.log("One card cost for:");
-console.log("Standard: "+oneCardCost.standard+" ★");
-console.log("Silver: "+oneCardCost.silver+" ★");
-console.log("Gold: "+oneCardCost.gold+" ★");
-console.log("Platinum: "+oneCardCost.platinum+" ★");
+console.log("Standard: "+oneCardCost.standard+" $");
+console.log("Silver: "+oneCardCost.silver+" $");
+console.log("Gold: "+oneCardCost.gold+" $");
+console.log("Platinum: "+oneCardCost.platinum+" $");
 console.log("================");
-console.log("Average card cost: "+oneCardCost.average.toFixed(1)+" ★");
+console.log("Average card cost: "+oneCardCost.average+" $");
 console.log("================");
-console.log("Total: "+sum.toFixed(1)+" ★");
+console.log("Total: "+sum.toFixed(1)+" $");
 }
 // Основная функция
 function getCards(){
@@ -69,7 +65,7 @@ bonus = Math.floor(Math.random()*100)+1;
 // Нахождение основной удачи
 lucky = Math.floor(Math.random()*255)+1;
 // Нахождение легендарной удачи
-luckPercent = parseFloat(lucky/256*100);
+luckPercent = (parseFloat(lucky/256*100)).toFixed(1);
 // Бонус
 if(bonus>97&&bonus!=100||bonus>50&&bonus<53||bonus>10&&bonus<12){
 	bonusStatus = true;
@@ -98,10 +94,10 @@ platinumBonus = true;
 // Нахождение суммы
 sum = (cards.standard*oneCardCost.standard)+(cards.silver*oneCardCost.silver)+(cards.gold*oneCardCost.gold)+(cards.platinum*oneCardCost.platinum);
 
-if(platinumBonus == true){
+if(platinumBonus){
 	sum =+ sum*2;
 }
-if(bonusStatus==true){
+if(bonusStatus){
  sum =+ sum+(sum/2);
 }
 getInfo();// Нахождение всей стоимости
