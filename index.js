@@ -6,31 +6,26 @@
 try{ // Проверка ошибок
 let info = {
 	name : "Carder",
-	version : "1.0"
+	version : "1.0.1"
 };
 // Переменные lucky;
-let sum;
-let luckPercent;
-let bonus = 0;
-let bonusStatus = false;
-let platinumBonus = false;
-let averageCardCost;
+let sum, luckPercent, bonus = 0, bonusStatus = false, platinumBonus = false, averageCardCost, lucky;
 // Кол-во всех карт
 let cards = {
 standard : 0,
 silver : 0,
 gold : 0,
 platinum : 0
-};
+},
 // Рандомное число выпавших карт
-let value = {
+value = {
 standard: Math.floor(Math.random()*4+4),
 silver: Math.floor(Math.random()*5+1),
 gold: Math.floor(Math.random()*3+2),
 platinum: Math.floor(Math.random()*3+2)
-};
+},
 // Предцена одной карты (неокруг.)
-let _oneCardCost = {
+ _oneCardCost = {
 standard: Math.random()*1+2,
 silver: Math.random()*2+3,
 gold: Math.random()*3+5,
