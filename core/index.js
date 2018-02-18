@@ -4,9 +4,8 @@
 
 // Информация о программе
 try{ // Проверка ошибок
-let basicInfo, info = {name : "Carder",	version : "1.1"};
-let JSON_info = JSON.stringify(info);
-let sum, luckPercent, bonus = 0, bonusStatus = false, platinumBonus = false, averageCardCost, lucky,
+let info = {name : "Carder",	version : "1.1.1"},
+sum, luckPercent, bonus = 0, bonusStatus = false, platinumBonus = false, averageCardCost, lucky,
 cards = { // Кол-во всех карт
 standard : 0,
 silver : 0,
@@ -24,9 +23,9 @@ standard: Math.random()*1+2,
 silver: Math.random()*2+3,
 gold: Math.random()*3+5,
 platinum: Math.random()*3+7
-};
+},
 // Округление цены одной карты
-let oneCardCost = {};
+oneCardCost = {};
 oneCardCost.standard = parseFloat(_oneCardCost.standard.toFixed(1));
 oneCardCost.silver = parseFloat(_oneCardCost.silver.toFixed(1));
 oneCardCost.gold = parseFloat(_oneCardCost.gold.toFixed(1));
@@ -35,8 +34,7 @@ oneCardCost.average = (((oneCardCost.standard+oneCardCost.silver+oneCardCost.gol
 
 function cardCore() { // init cardCore
 	this.getInfo = function(){
-		basicInfo = JSON.parse(JSON_info);
-	 console.log(basicInfo.name + " v." + basicInfo.version);
+	 console.log(info.name + " v." + info.version);
 	 console.log("================");
 	 console.log("Your cards: ");
 	 console.log("Standard: "+cards.standard);
@@ -102,7 +100,7 @@ function cardCore() { // init cardCore
 	}
 }
 
-let CardAPI = new cardCore();
+let CardAPI = new cardCore(); // init core as API
 CardAPI.getCards(); // Старт программы
 
 	}catch(e){ // Если найдена ошибка, то...
